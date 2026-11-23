@@ -1,11 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { BodegaForm } from './components/bodega-form/bodega-form';
+import { ProductosTabla } from './components/productos-tabla/productos-tabla';
 
 @Component({
-  imports: [],
+  imports: [BodegaForm, ProductosTabla],
   selector: 'app-root',
   styles: [],
-  template: ` <h1>Hello, {{ title() }}</h1> `,
+  template: `
+    <h1>Bodegas</h1>
+    <app-bodega-form (registrada)="tabla.cargar()" />
+    <app-productos-tabla #tabla />
+  `,
 })
-export class App {
-  protected readonly title = signal('bodegas-frontend');
-}
+export class App {}
